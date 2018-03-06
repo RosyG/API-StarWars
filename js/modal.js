@@ -1,13 +1,13 @@
-
 $('#modal1').modal();
 //Accediendo a la información de cada personaje.
-const URLpeople = "https://swapi.co/api/people/1/";
-fetch(URLpeople, {
-  method: 'get'})//Usando el método get.
-  .then( results => results.json() )//Asegurando que la respuesta este en estructura JSON.
-  .then( response =>  infPeople(response) )//En este then, la promesa tiene que ver con el return que se obtiene de la línea 8.
-  .catch( () => console.log('Error! :(') );
-
+//const URLpeople = "https://swapi.co/api/people/1/";
+let accessInfModal = URLpeople => {
+  fetch(URLpeople, {
+    method: 'get'})//Usando el método get.
+    .then( results => results.json() )//Asegurando que la respuesta este en estructura JSON.
+    .then( response =>  infPeople(response) )//En este then, la promesa tiene que ver con el return que se obtiene de la línea 8.
+    .catch( () => console.log('Error! :(') );
+}
 
 let infPeople = people => {
   let name = people.name;
@@ -28,10 +28,3 @@ let infPeople = people => {
 
   paintModal(templateModal);//Ejecutando la función que pintará la información en el modal.
 }//Fin de función infPeople.
-
-/*
-$('.style-h6').on('click', function(e) {
-  console.log(e.target);
-  console.log(this);
-});
-*/

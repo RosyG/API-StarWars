@@ -17,8 +17,8 @@ let movies = data => {
     for (var i = 0; i <=1 ; i++) {
       let itemCharacter = stringChar[i];
       //Obteniendo una lista de los personajes para después añadirla al templateString.
-      liCharacters += `<li id="inf-characters">
-  <h6 class="modal-trigger" class="style-h6" href="#modal1">${itemCharacter}</h6>
+      liCharacters += `<li class="inf-characters1">
+  <h6 class="modal-trigger inf-characters" href="#modal1">${itemCharacter}</h6>
   </li>`
     }
 
@@ -27,6 +27,26 @@ let movies = data => {
 <h5 class="style-h5">Episode id: ${episode}</h5>
 <h6 class="style-h6">Characters: ${liCharacters}</h6>
 </li>`;
+
   }
   paintTemplate(templateString);
+
+  let listCollection = document.getElementsByClassName('inf-characters');
+  giveEventList(listCollection);
 }
+
+const giveEventList = collection => {
+  console.log(collection);
+  let list = Array.from(collection);
+  console.log(list);
+  list.forEach(li => {
+    li.addEventListener('click', getDetailsCharacters );
+   })
+}
+const getDetailsCharacters = e => {
+  e.preventDefault;
+  let tag = e.target;
+  console.log(tag);
+  let urlDetails = tag.innerText;
+  accessInfModal(urlDetails);
+};//Fin de función getDetailsCharacters().
