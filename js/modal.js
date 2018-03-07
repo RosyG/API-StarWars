@@ -1,13 +1,12 @@
 $('#modal1').modal();
 //Accediendo a la información de cada personaje.
-//const URLpeople = "https://swapi.co/api/people/1/";
 let accessInfModal = URLpeople => {
   fetch(URLpeople, {
     method: 'get'})//Usando el método get.
     .then( results => results.json() )//Asegurando que la respuesta este en estructura JSON.
     .then( response =>  infPeople(response) )//En este then, la promesa tiene que ver con el return que se obtiene de la línea 8.
     .catch( () => console.log('Error! :(') );
-}
+}//Fin de la función accessInfModal(URLpeople).
 
 let infPeople = people => {
   let name = people.name;
@@ -27,4 +26,4 @@ let infPeople = people => {
   <h6>Hair color: ${hairColor}</h6>`;
 
   paintModal(templateModal);//Ejecutando la función que pintará la información en el modal.
-}//Fin de función infPeople.
+}//Fin de función infPeople(people).

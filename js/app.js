@@ -1,9 +1,8 @@
 const url = "https://swapi.co/api/films?format=json";
-//const url = "https://swapi.co/api/films/1/";//Cualquiera de llas URLs función a arroja lo mismo
 fetch(url, {
   method: 'get'})//Usando el método get.
   .then( results => results.json() )//Asegurando que la respuesta este en estructura JSON.
-  .then( response =>  movies(response.results) )//En este then, la promesa tiene que ver con el return que se obtiene de la línea 5.
+  .then( response =>  movies(response.results) )//En este then, la promesa tiene que ver con el return que se obtiene de la línea 4.
   .catch( () => console.log('Error! :(') );
 
 
@@ -33,7 +32,7 @@ let movies = data => {
 
   let listCollection = document.getElementsByClassName('inf-characters');
   giveEventList(listCollection);
-}
+}//Fin de función movies(data).
 
 const giveEventList = collection => {
   console.log(collection);
@@ -42,9 +41,9 @@ const giveEventList = collection => {
   list.forEach(li => {
     li.addEventListener('click', getDetailsCharacters );
    })
-}
+}//Fin de función giveEventList(collection)
 const getDetailsCharacters = e => {
-  e.preventDefault;
+  e.preventDefault();
   let tag = e.target;
   console.log(tag);
   let urlDetails = tag.innerText;
